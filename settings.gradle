@@ -1,1 +1,1 @@
-include ':plugin', ':EventBus'
+include ':EventBus'

@@ -9,7 +9,6 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/EventBus" />
-            <option value="$PROJECT_DIR$/plugin" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
