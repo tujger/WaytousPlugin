@@ -129,13 +129,6 @@ abstract public class PluginService extends Service implements EntityHolder {
         return null;
     }
 
-/*
-    @Override
-    public boolean onEvent(String s, Object o) {
-        return true;
-    }
-*/
-
     @Override
     public void setLoggingLevel(Level level) {
         loggingLevel = level;
