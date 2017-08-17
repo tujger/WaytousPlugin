@@ -113,7 +113,7 @@ abstract public class PluginService extends Service implements EntityHolder {
     @Override
     @SuppressWarnings("WeakerAccess")
     public String getType() {
-        Log.i(LOG_TAG, "GETTYPE:"+this);
+        Log.i(LOG_TAG, "GETTYPE:"+this.getClass().getPackage().getName());
         if(type != null) return type;
         type = this.getClass().getSimpleName();
         return type;
