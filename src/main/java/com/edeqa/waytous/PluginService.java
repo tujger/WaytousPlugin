@@ -22,15 +22,6 @@ abstract public class PluginService extends Service implements EntityHolder {
     static final String LOG_TAG = "PluginService";
 
     private String type;
-    private Integer viewResId;
-
-    public void onStart(Intent intent, int startId) {
-        super.onStart( intent, startId );
-    }
-
-    public void onDestroy() {
-        super.onDestroy();
-    }
 
     public IBinder onBind(Intent intent) {
         return binder;
@@ -111,9 +102,7 @@ abstract public class PluginService extends Service implements EntityHolder {
     @Override
     @SuppressWarnings("WeakerAccess")
     public String getType() {
-        if(type != null) return type;
-        type = this.getClass().getPackage().getName();
-        return type;
+        return this.getClass().getPackage().getName();
     }
 
     @Override
