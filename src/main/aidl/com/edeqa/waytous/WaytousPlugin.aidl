@@ -19,4 +19,6 @@ interface WaytousPlugin {
 
   void setLoggingLevel(in Bundle var1);
 
+  int getViewResId();
+
 }

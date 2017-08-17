@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 abstract public class PluginService extends Service implements EntityHolder {
 
     public static final String ACTION_POST_EVENT = "com.edeqa.waytous.intent.action.EVENT";
+    public static final String ACTION_POST_EVENT_NAME = "eventName";
+    public static final String ACTION_POST_EVENT_OBJECT = "eventObject";
 
     static final String LOG_TAG = "PluginService";
 
@@ -32,6 +34,10 @@ abstract public class PluginService extends Service implements EntityHolder {
     }
 
     private final WaytousPlugin.Stub binder = new WaytousPlugin.Stub() {
+
+        public int getViewResId() {
+            return PluginService.this.getViewResId();
+        }
 
         @Override
         public String getType() throws RemoteException {
@@ -129,6 +135,10 @@ abstract public class PluginService extends Service implements EntityHolder {
     public void setLoggingLevel(Level level) {
         loggingLevel = level;
         LOGGER.setLevel(loggingLevel);
+    }
+
+    public int getViewResId() {
+        return 0;
     }
 
 }
