@@ -5,20 +5,22 @@ package com.edeqa.waytous;
 
 interface WaytousPlugin {
 
-  String getType();
+    String getType();
 
-  void start();
+    void start();
 
-  void finish();
+    void finish();
 
-  List<String> events();
+    List<String> events();
 
-  void setContext(in Bundle var1);
+    void setContext(in Bundle bundle);
 
-  boolean onEvent(in String var1, in Bundle var2);
+    boolean onEvent(in String eventName, in Bundle bundle);
 
-  void setLoggingLevel(in Bundle var1);
+    void setLoggingLevel(in Bundle bundle);
 
-  int getViewResId();
+    int getViewResId();
+
+    void viewClicked(in int resId);
 
 }

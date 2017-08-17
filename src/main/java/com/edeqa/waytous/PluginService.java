@@ -27,11 +27,8 @@ abstract public class PluginService extends Service implements EntityHolder {
         return binder;
     }
 
-    private final WaytousPlugin.Stub binder = new WaytousPlugin.Stub() {
 
-        public int getViewResId() {
-            return PluginService.this.getViewResId();
-        }
+    private final WaytousPlugin.Stub binder = new WaytousPlugin.Stub() {
 
         @Override
         public String getType() throws RemoteException {
@@ -71,6 +68,16 @@ abstract public class PluginService extends Service implements EntityHolder {
         public void setLoggingLevel(Bundle var1) throws RemoteException {
             Level level = (Level) var1.getSerializable("level");
             PluginService.this.setLoggingLevel(level);
+        }
+
+        @Override
+        public int getViewResId() {
+            return PluginService.this.getViewResId();
+        }
+
+        @Override
+        public void viewClicked(int resId) {
+            PluginService.this.viewClicked(resId);
         }
     };
 
@@ -126,6 +133,10 @@ abstract public class PluginService extends Service implements EntityHolder {
 
     public int getViewResId() {
         return 0;
+    }
+
+    public void viewClicked(int resId) {
+
     }
 
 }
