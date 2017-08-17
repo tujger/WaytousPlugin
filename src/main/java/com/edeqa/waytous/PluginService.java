@@ -14,6 +14,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 abstract public class PluginService extends Service implements EntityHolder {
+
+    private static final String ACTION_POST_EVENT = "com.edeqa.waytous.intent.action.EVENT";
+
     static final String LOG_TAG = "PluginService";
 
     public void onStart(Intent intent, int startId) {
