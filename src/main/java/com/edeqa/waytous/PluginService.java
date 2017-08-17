@@ -32,45 +32,40 @@ abstract public class PluginService extends Service implements EntityHolder {
 
         @Override
         public String getType() throws RemoteException {
-            System.out.println(LOG_TAG + ":getType");
             return PluginService.this.getType();
         }
 
         @Override
         public void start() throws RemoteException {
-            System.out.println(LOG_TAG + ":start");
             PluginService.this.start();
         }
 
         @Override
         public void finish() throws RemoteException {
-            System.out.println(LOG_TAG + ":finish");
             PluginService.this.finish();
 
         }
 
         @Override
         public List<String> events() throws RemoteException {
-            System.out.println(LOG_TAG + ":events");
             return PluginService.this.events();
         }
 
         @Override
         public void setContext(Bundle var1) throws RemoteException {
-            System.out.println(LOG_TAG + ":setcontext:"+var1);
-            PluginService.this.setContext(var1);
+            Object context = var1.getSerializable("context");
+            PluginService.this.setContext(context);
 
         }
 
         @Override
         public boolean onEvent(String var1, Bundle var2) throws RemoteException {
-            System.out.println(LOG_TAG + ":onevent1111:"+var1+":"+var2.getSerializable("object"));
-            return PluginService.this.onEvent(var1, var2);
+            Object o = var2.getSerializable("object");
+            return PluginService.this.onEvent(var1, o);
         }
 
         @Override
         public void setLoggingLevel(Bundle var1) throws RemoteException {
-            System.out.println(LOG_TAG + ":setlogginglevel:"+var1);
             Level level = (Level) var1.getSerializable("level");
             PluginService.this.setLoggingLevel(level);
         }
@@ -94,6 +89,11 @@ abstract public class PluginService extends Service implements EntityHolder {
     protected PluginService() {
         LOGGER.setLevel(loggingLevel);
         LOGGER.info("PluginService:init"); //NON-NLS
+    }
+
+    @Override
+    public void setContext(Object context) {
+        this.context = context;
     }
 
     @Override
