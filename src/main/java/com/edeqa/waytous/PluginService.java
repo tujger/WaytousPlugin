@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.RemoteException;
-import android.util.Log;
 
 import com.edeqa.eventbus.EntityHolder;
 import com.edeqa.eventbus.EventBus;
@@ -45,7 +44,6 @@ abstract public class PluginService extends Service implements EntityHolder {
 
         @Override
         public String getType() throws RemoteException {
-            Log.i(LOG_TAG,"WUGETTYPE:");
             return PluginService.this.getType();
         }
 
@@ -113,9 +111,8 @@ abstract public class PluginService extends Service implements EntityHolder {
     @Override
     @SuppressWarnings("WeakerAccess")
     public String getType() {
-        Log.i(LOG_TAG, "GETTYPE:"+this);
         if(type != null) return type;
-        type = this.getClass().getSimpleName();
+        type = this.getClass().getPackage().getName();
         return type;
     }
 
